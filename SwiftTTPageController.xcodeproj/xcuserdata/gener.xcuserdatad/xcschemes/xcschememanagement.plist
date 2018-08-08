@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>HeadScrollViewTest.xcscheme</key>
+		<key>SwiftTTPageController.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,17 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>A1230F132105664C00E202A0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A1230F272105664D00E202A0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A1230F322105664D00E202A0</key>
+		<key>A12E70C7211AEB7D0016FA1E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

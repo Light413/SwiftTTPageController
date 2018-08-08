@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A1230F132105664C00E202A0"
-               BuildableName = "TTTagListController_Swift.app"
-               BlueprintName = "TTTagListController_Swift"
-               ReferencedContainer = "container:TTTagListController_Swift.xcodeproj">
+               BlueprintIdentifier = "A12E70C7211AEB7D0016FA1E"
+               BuildableName = "SwiftTTPageController.app"
+               BlueprintName = "SwiftTTPageController"
+               ReferencedContainer = "container:SwiftTTPageController.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,34 +28,14 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A1230F272105664D00E202A0"
-               BuildableName = "TTTagListController_SwiftTests.xctest"
-               BlueprintName = "TTTagListController_SwiftTests"
-               ReferencedContainer = "container:TTTagListController_Swift.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A1230F322105664D00E202A0"
-               BuildableName = "TTTagListController_SwiftUITests.xctest"
-               BlueprintName = "TTTagListController_SwiftUITests"
-               ReferencedContainer = "container:TTTagListController_Swift.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A1230F132105664C00E202A0"
-            BuildableName = "TTTagListController_Swift.app"
-            BlueprintName = "TTTagListController_Swift"
-            ReferencedContainer = "container:TTTagListController_Swift.xcodeproj">
+            BlueprintIdentifier = "A12E70C7211AEB7D0016FA1E"
+            BuildableName = "SwiftTTPageController.app"
+            BlueprintName = "SwiftTTPageController"
+            ReferencedContainer = "container:SwiftTTPageController.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -75,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A1230F132105664C00E202A0"
-            BuildableName = "TTTagListController_Swift.app"
-            BlueprintName = "TTTagListController_Swift"
-            ReferencedContainer = "container:TTTagListController_Swift.xcodeproj">
+            BlueprintIdentifier = "A12E70C7211AEB7D0016FA1E"
+            BuildableName = "SwiftTTPageController.app"
+            BlueprintName = "SwiftTTPageController"
+            ReferencedContainer = "container:SwiftTTPageController.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A1230F132105664C00E202A0"
-            BuildableName = "TTTagListController_Swift.app"
-            BlueprintName = "TTTagListController_Swift"
-            ReferencedContainer = "container:TTTagListController_Swift.xcodeproj">
+            BlueprintIdentifier = "A12E70C7211AEB7D0016FA1E"
+            BuildableName = "SwiftTTPageController.app"
+            BlueprintName = "SwiftTTPageController"
+            ReferencedContainer = "container:SwiftTTPageController.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

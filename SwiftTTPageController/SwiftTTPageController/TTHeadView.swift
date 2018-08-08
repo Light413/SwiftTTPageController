@@ -1,15 +1,15 @@
 //
-//  TTHeadTitleView.swift
-//  DCTT
+//  TTHeadView.swift
+//  SwiftTTPageController
 //
-//  Created by gener on 17/11/20.
-//  Copyright © 2017年 Light.W. All rights reserved.
+//  Created by gener on 2018/8/8.
+//  Copyright © 2018年 Light. All rights reserved.
 //
 
 import UIKit
 
-protocol TTHeadTitleDelegate {
-    func titleClickedAtIndex(_ index:Int);
+protocol TTHeadViewDelegate {
+    func tt_headViewSelectedAt(_ index:Int);
 }
 
 struct TTHeadTextAttribute {
@@ -27,14 +27,14 @@ struct TTHeadTextAttribute {
 }
 
 
-class TTHeadTitleView: UIView {
+class TTHeadView: UIView {
     /*设置字体属性*/
     var textAttribute:TTHeadTextAttribute = TTHeadTextAttribute.init(defaultColor: UIColor.lightGray, defaultSize: 15, selectedColor: UIColor.black, selectedSize: 16)
     
     fileprivate var _titles :[String]!
     fileprivate var _currentIndex: Int = 0//当前显示索引
     fileprivate var _collectionView:UICollectionView!
-    fileprivate var _delegate:TTHeadTitleDelegate?
+    fileprivate var _delegate:TTHeadViewDelegate?
     fileprivate let _itemWidth:CGFloat = 50
     fileprivate let _locationWidth:CGFloat = 20
     fileprivate var location:UILabel!
@@ -42,12 +42,12 @@ class TTHeadTitleView: UIView {
     //MARK: -
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        
         _collectionView = colleciontView(frame: CGRect (x: 0, y: 0, width: frame.width, height: frame.height))
         self.addSubview(_collectionView)
     }
     
-    init(frame:CGRect,titles:[String],delegate:TTHeadTitleDelegate? = nil) {
+    init(frame:CGRect,titles:[String],delegate:TTHeadViewDelegate? = nil) {
         super.init(frame:frame)
         _titles = titles
         _delegate = delegate
@@ -95,10 +95,10 @@ class TTHeadTitleView: UIView {
         
         if offset < 0 { offset = -_collectionView.contentInset.left;}
         if offset > 0 && max > 0 && offset > max { offset = max;}
-
+        
         let _x = CGFloat.init(index) * _itemWidth + (item_width - 0) * 0.5
         UIView.animate(withDuration: 0.2) {[unowned self] in
-           self.location.center = CGPoint (x: _x, y: self.location.center.y);
+            self.location.center = CGPoint (x: _x, y: self.location.center.y);
         }
         
         
@@ -106,11 +106,11 @@ class TTHeadTitleView: UIView {
         guard CGFloat.init(_titles.count) * _itemWidth > self.frame.width else {return }
         _collectionView.setContentOffset(CGPoint (x: offset, y: 0), animated: true)
     }
- 
+    
 }
 
 
-extension TTHeadTitleView:UICollectionViewDelegate,UICollectionViewDataSource {
+extension TTHeadView:UICollectionViewDelegate,UICollectionViewDataSource {
     //MARK: - UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return _titles.count
@@ -141,10 +141,10 @@ extension TTHeadTitleView:UICollectionViewDelegate,UICollectionViewDataSource {
         collectionView.reloadData()
         
         scrollToItemAtIndex(index)
-
+        
         if let delegate = _delegate {
-            delegate.titleClickedAtIndex(index)
+            delegate.tt_headViewSelectedAt(index)
         }
     }
-
+    
 }

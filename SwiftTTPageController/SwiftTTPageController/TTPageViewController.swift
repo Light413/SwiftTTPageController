@@ -1,33 +1,34 @@
 //
 //  TTPageViewController.swift
-//  DCTT
+//  SwiftTTPageController
 //
-//  Created by gener on 17/11/20.
-//  Copyright © 2017年 Light.W. All rights reserved.
+//  Created by gener on 2018/8/8.
+//  Copyright © 2018年 Light. All rights reserved.
 //
 
 import UIKit
+
 protocol TTPageViewControllerDelegate {
-    func pageViewControllerScrollTo(_ index:Int)
+    func tt_pageControllerSelectedAt(_ index:Int)
 }
 
 class TTPageViewController: UIViewController {
     var _viewControllers :[UIViewController]!
     var currentIndex: Int = 0//当前显示索引
-    var _delegate:TTPageViewControllerDelegate?    
+    var _delegate:TTPageViewControllerDelegate?
     var _collectionView:UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = .top
     }
-
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         _collectionView = self.colleciontView()
         view.addSubview(_collectionView)
     }
-
+    
     init(controllers:[UIViewController], frame viewFrame:CGRect,delegate:TTPageViewControllerDelegate? = nil) {
         super.init(nibName: nil, bundle: nil)
         
@@ -47,7 +48,7 @@ class TTPageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     fileprivate func colleciontView() -> UICollectionView {
         let rect = CGRect (x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         let _layout = UICollectionViewFlowLayout()
@@ -90,7 +91,7 @@ extension TTPageViewController:UICollectionViewDelegate,UICollectionViewDataSour
         
         v.removeFromParentViewController()
         v.view.frame =  CGRect (x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-
+        
         self.addChildViewController(v)
         cell.contentView.addSubview(v.view)
         return cell
@@ -113,12 +114,8 @@ extension TTPageViewController:UICollectionViewDelegate,UICollectionViewDataSour
         currentIndex = i
         
         if let delegate = _delegate {
-            delegate.pageViewControllerScrollTo(i)
+            delegate.tt_pageControllerSelectedAt(i)
         }
     }
-
+    
 }
-
-
-
-
