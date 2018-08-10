@@ -43,7 +43,7 @@ class TTHeadView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        _collectionView = colleciontView(frame: CGRect (x: 0, y: 0, width: frame.width, height: frame.height))
+        _collectionView = colleciontView(CGRect (x: 0, y: 0, width: frame.width, height: frame.height))
         self.addSubview(_collectionView)
     }
     
@@ -52,7 +52,7 @@ class TTHeadView: UIView {
         _titles = titles
         _delegate = delegate
         
-        _collectionView = colleciontView(frame: CGRect (x: 0, y: 0, width: frame.width, height: frame.height))
+        _collectionView = colleciontView(CGRect (x: 0, y: 0, width: frame.width, height: frame.height))
         self.addSubview(_collectionView)
         
         //location
@@ -67,7 +67,7 @@ class TTHeadView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    fileprivate func colleciontView(frame:CGRect) -> UICollectionView {
+    fileprivate func colleciontView(_ frame:CGRect) -> UICollectionView {
         let _layout = UICollectionViewFlowLayout()
         _layout.itemSize = CGSize (width: _itemWidth, height: frame.height)
         _layout.minimumInteritemSpacing = 0
