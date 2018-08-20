@@ -8,28 +8,31 @@
 
 import UIKit
 
-protocol TTPageViewControllerDelegate {
+public protocol TTPageViewControllerDelegate {
     func tt_pageControllerSelectedAt(_ index:Int)
 }
 
-class TTPageViewController: UIViewController {
-    var _viewControllers :[UIViewController]!
-    var currentIndex: Int = 0//当前显示索引
+open class TTPageViewController: UIViewController {
+    public var _viewControllers :[UIViewController]!
+    public var currentIndex: Int = 0//current selected index
+    
     var _delegate:TTPageViewControllerDelegate?
     var _collectionView:UICollectionView!
     
-    override func viewDidLoad() {
+    //MARK: -
+    override open func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = .top
     }
     
-    override func viewDidLayoutSubviews() {
+    override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         _collectionView = self.colleciontView()
         view.addSubview(_collectionView)
     }
     
-    init(controllers:[UIViewController], frame viewFrame:CGRect,delegate:TTPageViewControllerDelegate? = nil) {
+   public init(controllers:[UIViewController], frame viewFrame:CGRect,delegate:TTPageViewControllerDelegate? = nil) {
         super.init(nibName: nil, bundle: nil)
         
         _viewControllers = controllers
@@ -37,13 +40,13 @@ class TTPageViewController: UIViewController {
         view.frame = viewFrame
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     
     
-    override func didReceiveMemoryWarning() {
+    override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -68,7 +71,7 @@ class TTPageViewController: UIViewController {
         return collectionview
     }
     
-    func scrollToPageAtIndex(_ index:Int) {
+   public func scrollToPageAtIndex(_ index:Int) {
         _collectionView.scrollToItem(at: IndexPath.init(row: index, section: 0), at: .right, animated: false)
     }
     
@@ -77,11 +80,11 @@ class TTPageViewController: UIViewController {
 
 extension TTPageViewController:UICollectionViewDelegate,UICollectionViewDataSource{
     //MARK: - UICollectionViewDataSource
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return _viewControllers.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String (describing: UICollectionViewCell.self), for: indexPath)
         let v = _viewControllers[indexPath.row]
         for _v in cell.contentView.subviews{
@@ -98,12 +101,12 @@ extension TTPageViewController:UICollectionViewDelegate,UICollectionViewDataSour
     }
     
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
         _scroll(scrollView);
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         _scroll(scrollView);
     }
     
