@@ -1,7 +1,7 @@
 # SwiftTTPageController 
 仿网易新闻、头条等首页列表切换效果
 >Swift 3.0+ ,Xcode8.0 +
-
+>
 >实现多个ViewController列表切换；
 >
 >效果如下：
@@ -9,13 +9,13 @@
 ![TTTagListController](https://github.com/Light413/DemoSwift_TTTagListController/blob/master/2018-07-24%2009_48_10.gif?raw=true)
 
 
-##安装
+## 安装
 
 ```
 pod 'SwiftTTPageController'
 ```
 
-##应用
+## 应用
 
 * 创建HeadView
 
@@ -56,7 +56,7 @@ self.view.addSubview(pagevc.view)
 
 ```
 
-##License
+## License
 
 See LICENSE file for details
 
