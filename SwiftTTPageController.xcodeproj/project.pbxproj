@@ -62,8 +62,8 @@
 			children = (
 				A12E70DD211AEBC30016FA1E /* SwiftTTPageController */,
 				A12E70CB211AEB7D0016FA1E /* AppDelegate.swift */,
-				A12E70CD211AEB7D0016FA1E /* ViewController.swift */,
 				A12E70E2211AEE330016FA1E /* TableViewController.swift */,
+				A12E70CD211AEB7D0016FA1E /* ViewController.swift */,
 				A12E70CF211AEB7D0016FA1E /* Main.storyboard */,
 				A12E70D2211AEB7D0016FA1E /* Assets.xcassets */,
 				A12E70D4211AEB7D0016FA1E /* LaunchScreen.storyboard */,
@@ -324,6 +324,7 @@
 				A12E70DC211AEB7D0016FA1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

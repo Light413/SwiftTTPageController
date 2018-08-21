@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "SwiftTTPageController"
-  s.version      = "0.0.1"
-  s.summary      = "仿今日头条首页、网易新闻首页 ，实现多个ViewController列表切换."
+  s.version      = "0.0.2"
+  s.summary      = "A useful PageController lib 仿今日头条首页、网易新闻首页 ，实现多个ViewController列表切换."
   s.description  = <<-DESC
                     A Simple PageController ,like Toutiao , NetEase Home.(仿今日头条首页、网易新闻首页 ，实现多个ViewController列表切换).
                      DESC

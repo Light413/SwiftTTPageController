@@ -13,10 +13,13 @@ public protocol TTPageViewControllerDelegate {
 }
 
 open class TTPageViewController: UIViewController {
+    
     public var _viewControllers :[UIViewController]!
-    public var currentIndex: Int = 0//current selected index
+    
+    var currentIndex: Int = 0//current selected index
     
     var _delegate:TTPageViewControllerDelegate?
+    
     var _collectionView:UICollectionView!
     
     //MARK: -
@@ -70,7 +73,8 @@ open class TTPageViewController: UIViewController {
         collectionview.showsVerticalScrollIndicator = false
         return collectionview
     }
-    
+   
+    //Public Method
    public func scrollToPageAtIndex(_ index:Int) {
         _collectionView.scrollToItem(at: IndexPath.init(row: index, section: 0), at: .right, animated: false)
     }

@@ -15,11 +15,17 @@ public protocol TTHeadViewDelegate {
 public struct TTHeadTextAttribute {
     public var defaultTextColor:UIColor = UIColor.darkGray
     public var defaultFontSize:CGFloat = 15
+    
     public var selectedTextColor:UIColor = UIColor.black
     public var selectedFontSize:CGFloat = 16
     
+    public var bottomLineColor:UIColor = UIColor.orange
+    
     public var itemWidth:CGFloat = 50 //itemSize
     
+    public init() {
+        
+    }
 }
 
 
@@ -33,7 +39,7 @@ open class TTHeadView: UIView {
     
     fileprivate var _collectionView:UICollectionView!
     fileprivate let _locationWidth:CGFloat = 20
-    fileprivate var location:UILabel!
+    fileprivate var _bottomLine:UILabel!
     
     //MARK: - Init
     
@@ -59,12 +65,13 @@ open class TTHeadView: UIView {
         _collectionView = colleciontView(CGRect (x: 0, y: 0, width: frame.width, height: frame.height))
         self.addSubview(_collectionView)
         
-        //location
-        location = UILabel (frame: CGRect (x: (textAttribute.itemWidth - _locationWidth)/2, y: _collectionView.frame.height - 3, width: _locationWidth, height: 3))
-        location.backgroundColor = UIColor.orange
-        location.layer.cornerRadius = 2
-        location.layer.masksToBounds = true
-        _collectionView.addSubview(location)
+        //location line
+        _bottomLine = UILabel (frame: CGRect (x: (textAttribute.itemWidth - _locationWidth)/2, y: _collectionView.frame.height - 3, width: _locationWidth, height: 3))
+        _bottomLine.backgroundColor = textAttribute.bottomLineColor
+    
+        _bottomLine.layer.cornerRadius = 2
+        _bottomLine.layer.masksToBounds = true
+        _collectionView.addSubview(_bottomLine)
     }
     
     //MARK: -
@@ -83,8 +90,9 @@ open class TTHeadView: UIView {
         if offset > 0 && max > 0 && offset > max { offset = max;}
         
         let _x = CGFloat.init(index) * textAttribute.itemWidth + (item_width - 0) * 0.5
+        
         UIView.animate(withDuration: 0.2) {[unowned self] in
-            self.location.center = CGPoint (x: _x, y: self.location.center.y);
+            self._bottomLine.center = CGPoint (x: _x, y: self._bottomLine.center.y);
         }
         
         
@@ -113,9 +121,9 @@ open class TTHeadView: UIView {
     
 }
 
-
+//MARK: - UICollectionViewDataSource
 extension TTHeadView:UICollectionViewDelegate,UICollectionViewDataSource {
-    //MARK: - UICollectionViewDataSource
+
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return _titles.count
     }
