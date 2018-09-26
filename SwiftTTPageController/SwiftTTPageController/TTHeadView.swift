@@ -36,6 +36,8 @@ public struct TTHeadTextAttribute {
     ///itemSize宽度(默认50)
     public var itemWidth:CGFloat = 50
     
+    ///Required
+    public init() {}
 }
 
 
