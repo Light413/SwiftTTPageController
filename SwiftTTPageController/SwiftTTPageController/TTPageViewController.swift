@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol TTPageViewControllerDelegate {
+@objc public protocol TTPageViewControllerDelegate {
     func tt_pageControllerSelectedAt(_ index:Int)
 }
 
@@ -18,7 +18,7 @@ open class TTPageViewController: UIViewController {
     
     var currentIndex: Int = 0//current selected index
     
-    var _delegate:TTPageViewControllerDelegate?
+    weak var _delegate:TTPageViewControllerDelegate?
     
     var _collectionView:UICollectionView!
     
@@ -80,6 +80,9 @@ open class TTPageViewController: UIViewController {
     }
     
 }
+
+
+
 
 
 extension TTPageViewController:UICollectionViewDelegate,UICollectionViewDataSource{

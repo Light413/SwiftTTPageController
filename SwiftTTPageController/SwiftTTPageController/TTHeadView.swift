@@ -8,41 +8,50 @@
 
 import UIKit
 
-public protocol TTHeadViewDelegate {
+@objc public protocol TTHeadViewDelegate {
+    ///TTHeadView选中后方法回调
     func tt_headViewSelectedAt(_ index:Int);
 }
 
 public struct TTHeadTextAttribute {
+    ///默认字体颜色
     public var defaultTextColor:UIColor = UIColor.darkGray
+    ///默认字体大小
     public var defaultFontSize:CGFloat = 15
     
+    ///选中字体颜色
     public var selectedTextColor:UIColor = UIColor.black
+    ///选中字体大小
     public var selectedFontSize:CGFloat = 16
     
+    ///是否需要下划线(默认显示)
+    public var needBottomLine: Bool = true
+    ///下划线颜色
     public var bottomLineColor:UIColor = UIColor.orange
+    ///下划线宽度
+    public var bottomLineWidth:CGFloat = 0
+    ///下划线高度
+    public var bottomLineHeight:CGFloat = 3
+
+    ///itemSize宽度(默认50)
+    public var itemWidth:CGFloat = 50
     
-    public var itemWidth:CGFloat = 50 //itemSize
-    
-    public init() {
-        
-    }
 }
 
 
 open class TTHeadView: UIView {
-    /*textAttribute*/
+    ///TTHeadView属性
     var textAttribute:TTHeadTextAttribute!
     
     fileprivate var _titles :[String]!
     fileprivate var _currentIndex: Int = 0//current selected
-    fileprivate var _delegate:TTHeadViewDelegate?
+    fileprivate weak var _delegate:TTHeadViewDelegate?
     
     fileprivate var _collectionView:UICollectionView!
-    fileprivate let _locationWidth:CGFloat = 20
+    fileprivate var _bottomLineWidth:CGFloat = 0
     fileprivate var _bottomLine:UILabel!
     
     //MARK: - Init
-    
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -55,7 +64,12 @@ open class TTHeadView: UIView {
         self.addSubview(_collectionView)
     }
     
-   public init(frame:CGRect,titles:[String],delegate:TTHeadViewDelegate? = nil, textAttributes:TTHeadTextAttribute = TTHeadTextAttribute()) {
+   /// 初始化TTHeadView
+   public init(frame:CGRect,
+               titles:[String],
+               delegate:TTHeadViewDelegate? = nil,
+               textAttributes:TTHeadTextAttribute = TTHeadTextAttribute())
+   {
         super.init(frame:frame)
     
         _titles = titles
@@ -65,19 +79,26 @@ open class TTHeadView: UIView {
         _collectionView = colleciontView(CGRect (x: 0, y: 0, width: frame.width, height: frame.height))
         self.addSubview(_collectionView)
         
-        //location line
-        _bottomLine = UILabel (frame: CGRect (x: (textAttribute.itemWidth - _locationWidth)/2, y: _collectionView.frame.height - 3, width: _locationWidth, height: 3))
-        _bottomLine.backgroundColor = textAttribute.bottomLineColor
-    
-        _bottomLine.layer.cornerRadius = 2
-        _bottomLine.layer.masksToBounds = true
-        _collectionView.addSubview(_bottomLine)
+        //bottomLine
+        if textAttributes.needBottomLine {
+            if textAttributes.bottomLineWidth > 0 {
+                _bottomLineWidth = textAttributes.bottomLineWidth
+            }else{
+                _bottomLineWidth = textAttributes.itemWidth * 0.5
+            }
+            
+            _bottomLine = UILabel (frame: CGRect (x: (textAttribute.itemWidth - _bottomLineWidth)/2, y: _collectionView.frame.height - textAttributes.bottomLineHeight, width: _bottomLineWidth, height: textAttributes.bottomLineHeight))
+            _bottomLine.backgroundColor = textAttribute.bottomLineColor
+            
+            _bottomLine.layer.cornerRadius = 2
+            _bottomLine.layer.masksToBounds = true
+            _collectionView.addSubview(_bottomLine)
+        }
+
     }
     
-    //MARK: -
-    /// scroll to specific index location
-    ///
-    /// - parameter index:
+    //MARK:
+    /// 滑动到指定索引(供外部调用)
     public func scrollToItemAtIndex(_ index:Int) {
         _currentIndex = index
         _collectionView.reloadData()
@@ -91,16 +112,18 @@ open class TTHeadView: UIView {
         
         let _x = CGFloat.init(index) * textAttribute.itemWidth + (item_width - 0) * 0.5
         
-        UIView.animate(withDuration: 0.2) {[unowned self] in
-            self._bottomLine.center = CGPoint (x: _x, y: self._bottomLine.center.y);
+        if textAttribute.needBottomLine {
+            UIView.animate(withDuration: 0.2) {[unowned self] in
+                self._bottomLine.center = CGPoint (x: _x, y: self._bottomLine.center.y);
+            }
         }
-        
         
         //...
         guard CGFloat.init(_titles.count) * textAttribute.itemWidth > self.frame.width else {return }
         _collectionView.setContentOffset(CGPoint (x: offset, y: 0), animated: true)
     }
     
+    ///Private
     fileprivate func colleciontView(_ frame:CGRect) -> UICollectionView {
         let _layout = UICollectionViewFlowLayout()
         _layout.itemSize = CGSize (width: textAttribute.itemWidth, height: frame.height)

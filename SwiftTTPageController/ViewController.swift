@@ -16,8 +16,12 @@ class ViewController: UIViewController,TTHeadViewDelegate,TTPageViewControllerDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var attri = TTHeadTextAttribute()
+        attri.needBottomLine = true
+        
         let titles = ["新闻","视频","最新","新闻","视频","最新","军事","头条"]
-        headView = TTHeadView (frame: CGRect (x: 0, y: 0, width: UIScreen.main.bounds.width, height: 30), titles: titles, delegate: self)
+        headView = TTHeadView (frame: CGRect (x: 0, y: 0, width: UIScreen.main.bounds.width, height: 35), titles: titles, delegate: self ,textAttributes:attri)
+        
         navigationItem.titleView = headView;
         
         let vcs = [TableViewController(),TableViewController(),TableViewController(),TableViewController(),TableViewController(),TableViewController(),TableViewController(),TableViewController(),]
