@@ -162,7 +162,7 @@ extension TTHeadView:UICollectionViewDelegate,UICollectionViewDataSource {
         }
         
         let l = UILabel.init(frame: CGRect (x: 0, y: 0, width: textAttribute.itemWidth, height: self.frame.height))
-        l.font = UIFont.systemFont(ofSize: _currentIndex == indexPath.row ? textAttribute.selectedFontSize:textAttribute.defaultFontSize, weight: UIFontWeightRegular)
+        l.font = UIFont.systemFont(ofSize: _currentIndex == indexPath.row ? textAttribute.selectedFontSize:textAttribute.defaultFontSize, weight: UIFont.Weight.regular)
         l.textAlignment = .center
         l.text = v
         l.textColor = _currentIndex == indexPath.row ? textAttribute.selectedTextColor:textAttribute.defaultTextColor

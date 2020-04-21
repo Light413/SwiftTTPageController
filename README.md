@@ -1,10 +1,9 @@
 # SwiftTTPageController 
-仿网易新闻、头条等首页列表切换效果
->Swift 3.0+ ,Xcode8.0 +
->
->实现多个ViewController列表切换；
->
->效果如下：
+> 仿网易新闻、头条等首页列表切换效果,实现多个ViewController列表切换；
+
+* Swift 5.0+ ,Xcode 11.4
+
+## 效果如下：
 
 ![TTTagListController](https://github.com/Light413/DemoSwift_TTTagListController/blob/master/2018-07-24%2009_48_10.gif?raw=true)
 
