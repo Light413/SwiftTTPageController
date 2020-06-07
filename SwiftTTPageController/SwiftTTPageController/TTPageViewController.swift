@@ -25,7 +25,7 @@ open class TTPageViewController: UIViewController {
     //MARK: -
     override open func viewDidLoad() {
         super.viewDidLoad()
-        self.edgesForExtendedLayout = .top
+//        self.edgesForExtendedLayout = .top
     }
     
     override open func viewDidLayoutSubviews() {
@@ -71,6 +71,12 @@ open class TTPageViewController: UIViewController {
         collectionview.isPagingEnabled = true
         collectionview.showsHorizontalScrollIndicator = false
         collectionview.showsVerticalScrollIndicator = false
+        if #available(iOS 11.0, *) {
+            collectionview.contentInsetAdjustmentBehavior = .never
+        } else {
+            // Fallback on earlier versions
+            self.automaticallyAdjustsScrollViewInsets = false;
+        }
         return collectionview
     }
    
